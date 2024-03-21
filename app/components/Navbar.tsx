@@ -32,7 +32,7 @@ export default function Navbar() {
                             <li className="text-sm text-white font-medium ml-4 hover:border-b-2 border-b-2  border-transparent hover:border-white transition ease-in-out duration-300">Perjalanan</li>
                         </Link>
 
-                        <Link href='#vismisi'>
+                        <Link href='#visimisi'>
                             <li className="text-sm text-white font-medium ml-4 hover:border-b-2 border-b-2  border-transparent hover:border-white transition ease-in-out duration-300">Visi Misi</li>
                         </Link>
 
@@ -49,10 +49,9 @@ export default function Navbar() {
                 <div onClick={handleNavbar} className="md:hidden cursor-pointer mr-8">
                     <AiOutlineMenu size={32} color="white" />
                 </div>
-
                 <div className={openMenu
-                    ? 'fixed top-0 left-0 w-[65%] h-[100vh] sm:hidden bg-gray-300 p-10 ease-in-out duration-500'
-                    : 'fixed left-[-100%] h-[100vh] top-0 ease-in-out duration-500'
+                    ? 'fixed top-0 left-0 w-[65%] h-[100vh] sm:hidden bg-gray-300 p-10 ease-in-out duration-300'
+                    : 'fixed left-[-100%] w-[65%] h-[100vh] top-0 ease-in-out duration-300'
                 }>
                     <div className="w-full flex justify-end items-center">
                         <div onClick={handleNavbar} className="md:hidden cursor-pointer mr-8">
@@ -69,7 +68,7 @@ export default function Navbar() {
                             <li className="text-xl text-black font-medium mb-4 ">Perjalanan</li>
                         </Link>
 
-                        <Link href='#vismisi'>
+                        <Link href='#visimisi'>
                             <li className="text-xl text-black font-medium mb-4 ">Visi Misi</li>
                         </Link>
 
