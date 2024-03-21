@@ -5,8 +5,8 @@ import background from '../../public/bg3.jpg';
 export default function Header() {
     return (
         <div className="bg-cover w-full h-full" style={{ backgroundImage: `url(${background.src})` }}>
-            <Navbar />
-            <div className="mx-auto container h-80 px-10 md:px-20 mt-20 ">
+            <Navbar isLandingPage={true} />
+            <div className="mx-auto container h-80 px-10 md:px-20 mt-20  ">
                 <h1 className="text-lg md:text-2xl font-semibold mb-2 text-gray-50">Rasa Yang Menyatukan Kita</h1>
                 <div className="w-full md:w-3/4 lg:w-1/2">
                     <p className="text-sm md:text-base text-white font-light tracking-wide leading-relaxed">

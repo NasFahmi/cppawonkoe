@@ -5,7 +5,10 @@ import logo from '../../public/logo.png';
 import Link from "next/link";
 import { AiOutlineClose, AiOutlineMenu } from "react-icons/ai";
 
-export default function Navbar() {
+interface navColor {
+    isLandingPage?: boolean; 
+}
+export default function Navbar({isLandingPage}: navColor) {
     const [openMenu, setopenMenu] = useState(false);
     const handleNavbar = () => {
         setopenMenu(!openMenu)
@@ -19,29 +22,29 @@ export default function Navbar() {
                         alt="logo"
                         className="cursor-pointer"
                     />
-                    <h1 className="font-semibold text-lg text-white">PAWONKOE</h1>
+                    <h1 className={`font-semibold text-lg ${isLandingPage?`text-white`:`text-black`} `}>PAWONKOE</h1>
                 </Link>
 
                 <div className="hidden sm:flex">
                     <ul className="hidden sm:flex">
-                        <Link href='#tentangkami'>
-                            <li className="text-sm text-white font-medium ml-4 hover:border-b-2 border-b-2  border-transparent hover:border-white transition ease-in-out duration-300">Tentang Kami</li>
+                        <Link href='/#tentangkami'>
+                            <li className={`text-sm ${isLandingPage?`text-white`:`text-black`} font-medium ml-4 hover:border-b-2 border-b-2  border-transparent hover:${isLandingPage?`border-white`:`border-black`} transition ease-in-out duration-300`}>Tentang Kami</li>
                         </Link>
 
-                        <Link href='#perjalanan'>
-                            <li className="text-sm text-white font-medium ml-4 hover:border-b-2 border-b-2  border-transparent hover:border-white transition ease-in-out duration-300">Perjalanan</li>
+                        <Link href='/#perjalanan'>
+                            <li className={`text-sm ${isLandingPage?`text-white`:`text-black`} font-medium ml-4 hover:border-b-2 border-b-2  border-transparent hover:${isLandingPage?`border-white`:`border-black`} transition ease-in-out duration-300`}>Perjalanan</li>
                         </Link>
 
-                        <Link href='#visimisi'>
-                            <li className="text-sm text-white font-medium ml-4 hover:border-b-2 border-b-2  border-transparent hover:border-white transition ease-in-out duration-300">Visi Misi</li>
+                        <Link href='/#visimisi'>
+                            <li className={`text-sm ${isLandingPage?`text-white`:`text-black`} font-medium ml-4 hover:border-b-2 border-b-2  border-transparent hover:${isLandingPage?`border-white`:`border-black`} transition ease-in-out duration-300`}>Visi Misi</li>
                         </Link>
 
-                        <Link href='#katalog'>
-                            <li className="text-sm text-white font-medium ml-4 hover:border-b-2 border-b-2  border-transparent hover:border-white transition ease-in-out duration-300">Katalog</li>
+                        <Link href='/katalog'>
+                            <li className={`text-sm ${isLandingPage?`text-white`:`text-black`} font-medium ml-4 hover:border-b-2 border-b-2  border-transparent hover:${isLandingPage?`border-white`:`border-black`} transition ease-in-out duration-300`}>Katalog</li>
                         </Link>
 
-                        <Link href='#kontak'>
-                            <li className="text-sm text-white font-medium ml-4 hover:border-b-2 border-b-2  border-transparent hover:border-white transition ease-in-out duration-300">Kontak</li>
+                        <Link href='/#kontak'>
+                            <li className={`text-sm ${isLandingPage?`text-white`:`text-black`} font-medium ml-4 hover:border-b-2 border-b-2  border-transparent hover:${isLandingPage?`border-white`:`border-black`} transition ease-in-out duration-300`}>Kontak</li>
                         </Link>
                     </ul>
                 </div>
@@ -60,23 +63,23 @@ export default function Navbar() {
                     </div>
 
                     <ul className="mt-10">
-                        <Link href='#tentangkami'>
+                        <Link href='/#tentangkami'>
                             <li className="text-xl text-black font-medium mb-4 ">Tentang Kami</li>
                         </Link>
 
-                        <Link href='#perjalanan'>
+                        <Link href='/#perjalanan'>
                             <li className="text-xl text-black font-medium mb-4 ">Perjalanan</li>
                         </Link>
 
-                        <Link href='#visimisi'>
+                        <Link href='/#visimisi'>
                             <li className="text-xl text-black font-medium mb-4 ">Visi Misi</li>
                         </Link>
 
-                        <Link href='#katalog'>
+                        <Link href='/katalog'>
                             <li className="text-xl text-black font-medium mb-4 ">Katalog</li>
                         </Link>
 
-                        <Link href='#kontak'>
+                        <Link href='/#kontak'>
                             <li className="text-xl text-black font-medium mb-4 ">Kontak</li>
                         </Link>
                     </ul>
