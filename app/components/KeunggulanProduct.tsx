@@ -1,5 +1,34 @@
+"use client"
 import Link from "next/link";
 import React from "react";
+import Image from "next/image";
+import ShopeeImage from '../../public/sopi1.png'
+import IgIcon from '../../public/ig-icon.png'
+import WaImage from '../../public/whatsapp.png'
+import GmailImage from '../../public/gmail.png'
+import FacebookImage from '../../public/facebook.png'
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Navigation } from 'swiper/modules';
+// Import Swiper styles
+import 'swiper/css';
+import 'swiper/css/navigation';
+const data = [
+    {
+        'image': ShopeeImage
+    },
+    {
+        'image': IgIcon
+    },
+    {
+        'image': WaImage
+    },
+    {
+        'image': GmailImage
+    },
+    {
+        'image': FacebookImage
+    },
+]
 export default function KeunggulanProduct() {
     return (
         <div className="bg-blue-200 pb-10 md:mt-28 rounded-3xl shadow-xl">
@@ -28,8 +57,7 @@ export default function KeunggulanProduct() {
                     </div>
                 </div>
                 <div className="w-10/12 md:w-1/2 flex justify-center items-center">
-                    {/* Carousel */}
-                    <h1>ini carousel</h1>
+                    <Carousel />
                 </div>
             </div>
             <div className="md:hidden flex justify-center items-center px-8">
@@ -37,6 +65,23 @@ export default function KeunggulanProduct() {
                     className="w-full px-4 py-2 mt-4 text-sm font-medium leading-5 text-center text-white transition-colors duration-150 bg-[#276ED8] border border-transparent rounded-lg active:bg-blue-600 hover:bg-blue-700">Lihat
                     Semua Product</Link>
             </div>
+        
         </div>
+    );
+}
+export function Carousel() {
+    return (
+        <Swiper 
+            navigation={true} 
+            modules={[Navigation]} 
+            loop={true}
+        >
+             {data.map((item, index) => (
+              <SwiperSlide key={index}>
+                <Image src={item.image} alt={`${item.image}`} />
+              </SwiperSlide>
+            ))}
+
+        </Swiper>
     );
 }
