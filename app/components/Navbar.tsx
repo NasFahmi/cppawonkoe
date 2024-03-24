@@ -28,7 +28,7 @@ export default function Navbar({isLandingPage}: navColor) {
                 <div className="hidden sm:flex">
                     <ul className="hidden sm:flex">
                         <Link href='/#tentangkami'>
-                            <li className={`text-sm ${isLandingPage?`text-white`:`text-black`} font-medium ml-4 hover:border-b-2 border-b-2  border-transparent hover:${isLandingPage?`border-white`:`border-black`} transition ease-in-out duration-300`}>Tentang Kami</li>
+                            <li className={`text-sm ${isLandingPage?`text-white`:`text-black`} font-medium ml-4 hover:border-b-2 border-b-2  border-transparent  hover:${isLandingPage?`border-white`:`border-black`} transition ease-in-out duration-300`}>Tentang Kami</li>
                         </Link>
 
                         <Link href='/#perjalanan'>
