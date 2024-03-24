@@ -7,6 +7,11 @@ import IgIcon from '../../public/ig-icon.png'
 import WaImage from '../../public/whatsapp.png'
 import GmailImage from '../../public/gmail.png'
 import FacebookImage from '../../public/facebook.png'
+import Rambak1 from '@/public/rambak1.jpeg'
+import Rambak2 from '@/public/rambak2.jpeg'
+import Rambak3 from '@/public/rambak3.jpeg'
+import Sambal1 from '@/public/sambal1.jpeg'
+import Sambal2 from '@/public/sambal2.jpeg'
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation } from 'swiper/modules';
 // Import Swiper styles
@@ -14,19 +19,19 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 const data = [
     {
-        'image': ShopeeImage
+        'image': Rambak1
     },
     {
-        'image': IgIcon
+        'image': Rambak2
     },
     {
-        'image': WaImage
+        'image': Rambak3
     },
     {
-        'image': GmailImage
+        'image': Sambal1
     },
     {
-        'image': FacebookImage
+        'image': Sambal2
     },
 ]
 export default function KeunggulanProduct() {
@@ -37,7 +42,7 @@ export default function KeunggulanProduct() {
                 className=" mx-auto max-w-screen-xl px-4 flex justify-center items-center flex-col   md:px-10 md:flex-row md:gap-8 lg:mt-0 lg:items-stretch gap-8">
                 <div className="ml-4 md:w-1/2">
                     <div className="lg:w-8/12">
-                        <ul className="px-5 list-disc lg:text-lg whitespace-nowrap">
+                        <ul className="px-5 list-disc lg:text-lg whitespace-nowrap ml-10 sm:ml-0">
                             <li>Produk bersertifikat HALAL</li>
                             <li>Kemasan rapi dan tahan lama</li>
                             <li>Menggunakan bahan premium</li>
@@ -56,7 +61,7 @@ export default function KeunggulanProduct() {
                             Semua Product</a>
                     </div>
                 </div>
-                <div className="w-10/12 md:w-1/2 flex justify-center items-center">
+                <div className="w-full flex justify-center  items-center">
                     <Carousel />
                 </div>
             </div>
@@ -65,23 +70,30 @@ export default function KeunggulanProduct() {
                     className="w-full px-4 py-2 mt-4 text-sm font-medium leading-5 text-center text-white transition-colors duration-150 bg-[#276ED8] border border-transparent rounded-lg active:bg-blue-600 hover:bg-blue-700">Lihat
                     Semua Product</Link>
             </div>
-        
+
         </div>
     );
 }
-export function Carousel() {
-    return (
-        <Swiper 
-            navigation={true} 
-            modules={[Navigation]} 
-            loop={true}
-        >
-             {data.map((item, index) => (
-              <SwiperSlide key={index}>
-                <Image src={item.image} alt={`${item.image}`} />
-              </SwiperSlide>
-            ))}
+export function Carousel() { // Default width of 800px
 
+    return (
+        <Swiper
+            navigation={true}
+            modules={[Navigation]}
+            loop={true}
+            spaceBetween={0} // Remove spacing between slides for full coverage
+            style={{ width: 520, height: 380, borderRadius:20}} // Set the desired carousel width
+        >
+            {data.map((item, index) => (
+                <SwiperSlide key={index}>
+                    <Image
+                        src={item.image}
+                        alt={`${item.image}`}
+                        layout="fill" // Use the "fill" layout for background-cover behavior
+                        objectFit="cover" // Ensure images cover the entire slide area
+                    />
+                </SwiperSlide>
+            ))}
         </Swiper>
     );
 }

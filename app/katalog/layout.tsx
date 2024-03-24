@@ -1,3 +1,4 @@
+import Footer from "../components/Footer"
 import Navbar from "../components/Navbar"
 
 export default function KatalogLayout({
@@ -9,6 +10,7 @@ export default function KatalogLayout({
       <section>
         <Navbar isLandingPage={false}/>
         {children}
+        <Footer />
       </section>
     )
   }

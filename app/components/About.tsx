@@ -4,7 +4,7 @@ import TentangKami from '../../public/tentang-kami.png';
 export default function About() {
     return (
         <div id="tentangkami"
-            className=" mx-auto max-w-screen-xl px-4 flex justify-center items-center flex-col mt-10 md:mt-20  md:px-10 md:flex-row md:gap-8 lg:items-stretch ">
+            className=" mx-auto max-w-screen-xl px-4 flex justify-center items-center flex-col mt-10 md:mt-20 mb-20  md:px-10 md:flex-row md:gap-8 lg:items-stretch ">
             <div className="mb-10 md:w-1/2">
                 <div className="lg:w-8/12">
                     <h1 className="text-2xl font-semibold mb-4 pt-10 lg:text-3xl">Tentang Kami</h1>
@@ -19,7 +19,6 @@ export default function About() {
             </div>
             <div className="w-10/12 md:w-1/2">
                 <Image src={TentangKami} alt='Tentang Kami'/>
-                {/* <img src="{{ asset('assets/images/tentang-kami.png') }}" alt="" > */}
             </div>
         </div>
     );
