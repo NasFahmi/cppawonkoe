@@ -26,8 +26,19 @@ export default function Katalog() {
                     </button>
                 </form>
             </div>
-            <div className="grid grid-cols-1">
-                <CardProduct />
+            <div className="flex justify-center items-center">
+
+
+                <div className="grid max-w-screen-lg grid-cols-2 md:grid-cols-3 lg:grid-cols-4 justify-center items-center gap-6 py-10">
+                    <CardProduct />
+                    <CardProduct />
+                    <CardProduct />
+                    <CardProduct />
+                    <CardProduct />
+                    <CardProduct />
+                    <CardProduct />
+                    <CardProduct />
+                </div>
             </div>
         </div>
     );
