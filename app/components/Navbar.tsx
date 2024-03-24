@@ -50,7 +50,7 @@ export default function Navbar({isLandingPage}: navColor) {
                 </div>
 
                 <div onClick={handleNavbar} className="md:hidden cursor-pointer mr-8">
-                    <AiOutlineMenu size={32} color="white" />
+                    <AiOutlineMenu size={32} color={isLandingPage ? 'white' : 'black'} />
                 </div>
                 <div className={openMenu
                     ? 'fixed top-0 left-0 w-[65%] h-[100vh] sm:hidden bg-gray-300 p-10 ease-in-out duration-300'

@@ -39,10 +39,10 @@ export default function KeunggulanProduct() {
         <div className="bg-blue-200 pb-10 md:mt-28 rounded-3xl shadow-xl">
             <h1 className="text-2xl text-center font-semibold mb-10 pt-10 lg:text-3xl">Keunggulan Produk Kami</h1>
             <div id="keungulan"
-                className=" mx-auto max-w-screen-xl px-4 flex justify-center items-center flex-col   md:px-10 md:flex-row md:gap-8 lg:mt-0 lg:items-stretch gap-8">
+                className=" mx-auto max-w-screen-xl px-4 flex justify-center items-center flex-col   md:px-10 lg:flex-row md:gap-8 lg:mt-0 lg:items-stretch gap-8">
                 <div className="ml-4 md:w-1/2">
                     <div className="lg:w-8/12">
-                        <ul className="px-5 list-disc lg:text-lg whitespace-nowrap ml-10 sm:ml-0">
+                        <ul className="px-5 list-disc lg:text-lg whitespace-normal lg:whitespace-nowrap">
                             <li>Produk bersertifikat HALAL</li>
                             <li>Kemasan rapi dan tahan lama</li>
                             <li>Menggunakan bahan premium</li>
@@ -57,7 +57,7 @@ export default function KeunggulanProduct() {
                     </div>
                     <div className="hidden md:flex justify-start items-start">
                         <a href="/katalog"
-                            className="w-1/2 px-4 py-2 mt-4 text-sm font-medium leading-5 text-center text-white transition-colors duration-150 bg-[#276ED8] border border-transparent rounded-lg active:bg-blue-600 hover:bg-blue-700">Lihat
+                            className="w-fit px-4 py-2 mt-4 text-sm font-medium leading-5 text-center text-white transition-colors duration-150 bg-[#276ED8] border border-transparent rounded-lg active:bg-blue-600 hover:bg-blue-700">Lihat
                             Semua Product</a>
                     </div>
                 </div>
@@ -82,15 +82,16 @@ export function Carousel() { // Default width of 800px
             modules={[Navigation]}
             loop={true}
             spaceBetween={0} // Remove spacing between slides for full coverage
-            style={{ width: 520, height: 380, borderRadius:20}} // Set the desired carousel width
+            className="w-[500px] h-[340px] md:w-[400px] md:h-[320px]  lg:w-[500px] lg:h-[340px] rounded-[20px]"
         >
             {data.map((item, index) => (
                 <SwiperSlide key={index}>
                     <Image
+                        className="object-cover"
                         src={item.image}
                         alt={`${item.image}`}
-                        layout="fill" // Use the "fill" layout for background-cover behavior
-                        objectFit="cover" // Ensure images cover the entire slide area
+                        fill={true}
+                        sizes="100vw"
                     />
                 </SwiperSlide>
             ))}
