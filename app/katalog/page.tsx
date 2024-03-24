@@ -8,6 +8,44 @@ import Rambak3 from '@/public/rambak3.jpeg'
 import Sambal1 from '@/public/sambal1.jpeg'
 import Sambal2 from '@/public/sambal2.jpeg'
 
+const data = [
+    {
+        'image':Rambak1,
+        'title': 'Rambak Cumi',
+        'description': 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quasi nesciunt totam distinctio explicabo praesentium consequatur sapiente fuga laudantium quas dolorem',
+        'price':'15000',
+        'slug':'rambak-cumi'
+
+    },
+    {
+        'image':Rambak2,
+        'title': 'Rambak Cumi',
+        'description': 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quasi nesciunt totam distinctio explicabo praesentium consequatur sapiente fuga laudantium quas dolorem',
+        'price':'20000',
+        'slug':'rambak-cumi'
+    },
+    {
+        'image':Rambak3,
+        'title': 'Rambak Cumi',
+        'description': 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quasi nesciunt totam distinctio explicabo praesentium consequatur sapiente fuga laudantium quas dolorem',
+        'price':'25000',
+        'slug':'rambak-cumi'
+    },
+    {
+        'image':Sambal1,
+        'title': 'Sambal Cumi',
+        'description': 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quasi nesciunt totam distinctio explicabo praesentium consequatur sapiente fuga laudantium quas dolorem',
+        'price':'5000',
+        'slug':'sambal-cumi'
+    },
+    {
+        'image':Sambal2,
+        'title': 'Sambal Cumi',
+        'description': 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quasi nesciunt totam distinctio explicabo praesentium consequatur sapiente fuga laudantium quas dolorem',
+        'price':'20000',
+        'slug':'sambal-cumi'
+    },
+]
 export default function Katalog() {
     return (
         <div className="">
@@ -35,11 +73,9 @@ export default function Katalog() {
             <div className="flex justify-center items-center">
 
                 <div className="grid max-w-screen-lg grid-cols-2 md:grid-cols-3 lg:grid-cols-4 justify-center items-center gap-6 py-10">
-                    <CardProduct image={Rambak1.src} description={'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quasi nesciunt totam distinctio explicabo praesentium consequatur sapiente fuga laudantium quas dolorem'} price='15000'title='Rambak Cumi'/>
-                    <CardProduct image={Rambak2.src} description={'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quasi nesciunt totam distinctio explicabo praesentium consequatur sapiente fuga laudantium quas dolorem'} price='15000'title='Rambak '/>
-                    <CardProduct image={Rambak3.src} description={'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quasi nesciunt totam distinctio explicabo praesentium consequatur sapiente fuga laudantium quas dolorem'} price='15000'title='Cumi'/>
-                    <CardProduct image={Sambal1.src} description={'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quasi nesciunt totam distinctio explicabo praesentium consequatur sapiente fuga laudantium quas dolorem'} price='15000'title='Sambal Cumi'/>
-                    <CardProduct image={Sambal2.src} description={'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quasi nesciunt totam distinctio explicabo praesentium consequatur sapiente fuga laudantium quas dolorem'} price='15000'title='Sambal'/>
+                    {data.map((item,index)=>(
+                        <CardProduct key={index} image={item.image.src} description={item.description} price={item.price} title={item.title} slug={item.slug}/> 
+                    ))}
                 </div>
             </div>
         </div>
