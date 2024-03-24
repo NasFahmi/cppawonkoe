@@ -22,7 +22,7 @@ export default function Navbar({isLandingPage}: navColor) {
                         alt="logo"
                         className="cursor-pointer"
                     />
-                    <h1 className={`font-semibold text-lg ${isLandingPage?`text-white`:`text-black`} `}>PAWONKOE</h1>
+                    <h1  className={`font-semibold text-lg ${isLandingPage?`text-white`:`text-black`} `}>PAWONKOE</h1>
                 </Link>
 
                 <div className="hidden sm:flex">

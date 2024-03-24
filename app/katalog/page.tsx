@@ -2,12 +2,18 @@
 import background from '@/public/bg-katalog.jpg'
 import Image from 'next/image';
 import CardProduct from '../components/CardProduct';
+import Rambak1 from '@/public/rambak1.jpeg'
+import Rambak2 from '@/public/rambak2.jpeg'
+import Rambak3 from '@/public/rambak3.jpeg'
+import Sambal1 from '@/public/sambal1.jpeg'
+import Sambal2 from '@/public/sambal2.jpeg'
+
 export default function Katalog() {
     return (
         <div className="">
             <div className="relative w-full h-80">
                 <div className="flex justify-center items-center z-[20]  absolute top-0 left-0 right-0 bottom-0">
-                    <h1 className="text-3xl text-center md:text-3xl font-bold mb-2 text-gray-50">Selamat Datang di Katalog Produk</h1>
+                    <h1 className="text-xl text-center md:text-3xl font-bold mb-2 text-gray-50">Selamat Datang di Katalog Produk</h1>
                 </div>
                 <Image src={background.src} width={1280} height={320} alt="Katalog background" className="w-full h-full object-cover absolute top-0left-0 z-0 brightness-75" />
             </div>
@@ -28,16 +34,12 @@ export default function Katalog() {
             </div>
             <div className="flex justify-center items-center">
 
-
                 <div className="grid max-w-screen-lg grid-cols-2 md:grid-cols-3 lg:grid-cols-4 justify-center items-center gap-6 py-10">
-                    <CardProduct />
-                    <CardProduct />
-                    <CardProduct />
-                    <CardProduct />
-                    <CardProduct />
-                    <CardProduct />
-                    <CardProduct />
-                    <CardProduct />
+                    <CardProduct image={Rambak1.src} description={'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quasi nesciunt totam distinctio explicabo praesentium consequatur sapiente fuga laudantium quas dolorem'} price='15000'title='Rambak Cumi'/>
+                    <CardProduct image={Rambak2.src} description={'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quasi nesciunt totam distinctio explicabo praesentium consequatur sapiente fuga laudantium quas dolorem'} price='15000'title='Rambak '/>
+                    <CardProduct image={Rambak3.src} description={'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quasi nesciunt totam distinctio explicabo praesentium consequatur sapiente fuga laudantium quas dolorem'} price='15000'title='Cumi'/>
+                    <CardProduct image={Sambal1.src} description={'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quasi nesciunt totam distinctio explicabo praesentium consequatur sapiente fuga laudantium quas dolorem'} price='15000'title='Sambal Cumi'/>
+                    <CardProduct image={Sambal2.src} description={'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quasi nesciunt totam distinctio explicabo praesentium consequatur sapiente fuga laudantium quas dolorem'} price='15000'title='Sambal'/>
                 </div>
             </div>
         </div>
