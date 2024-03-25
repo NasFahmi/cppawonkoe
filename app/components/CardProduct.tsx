@@ -11,7 +11,7 @@ interface product {
 export default function CardProduct({image,title,description,price,slug}:product) {
     return (
         <div className="flex justify-center items-center">
-            <div className="block rounded-lg bg-slate-100 shadow-md w-44 md:w-52 ">
+            <div className="block rounded-lg bg-slate-100 shadow-lg w-44 md:w-52 ">
                 <div className="relative overflow-hidden bg-cover bg-no-repeat" data-te-ripple-init data-te-ripple-color="light">
                     <Image className="rounded-lg object-cover h-40  w-full" src={image!}
                         alt="" width={1000} height={1000} />
