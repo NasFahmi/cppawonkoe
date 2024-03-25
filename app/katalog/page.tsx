@@ -7,46 +7,152 @@ import Rambak2 from '@/public/rambak2.jpeg'
 import Rambak3 from '@/public/rambak3.jpeg'
 import Sambal1 from '@/public/sambal1.jpeg'
 import Sambal2 from '@/public/sambal2.jpeg'
+import { useSearchParams, usePathname, useRouter } from 'next/navigation';
+import { useDebouncedCallback } from 'use-debounce';
+import Pagination from '../components/Pagination';
+import { useState } from 'react';
 
 const data = [
     {
-        'image':Rambak1,
+        'image': Rambak1,
         'title': 'Rambak Cumi',
         'description': 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quasi nesciunt totam distinctio explicabo praesentium consequatur sapiente fuga laudantium quas dolorem',
-        'price':'15000',
-        'slug':'rambak-cumi'
+        'price': '15000',
+        'slug': 'rambak-cumi'
 
     },
     {
-        'image':Rambak2,
+        'image': Rambak2,
         'title': 'Rambak Cumi',
         'description': 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quasi nesciunt totam distinctio explicabo praesentium consequatur sapiente fuga laudantium quas dolorem',
-        'price':'20000',
-        'slug':'rambak-cumi'
+        'price': '20000',
+        'slug': 'rambak-cumi'
     },
     {
-        'image':Rambak3,
+        'image': Rambak3,
         'title': 'Rambak Cumi',
         'description': 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quasi nesciunt totam distinctio explicabo praesentium consequatur sapiente fuga laudantium quas dolorem',
-        'price':'25000',
-        'slug':'rambak-cumi'
+        'price': '25000',
+        'slug': 'rambak-cumi'
     },
     {
-        'image':Sambal1,
+        'image': Sambal1,
         'title': 'Sambal Cumi',
         'description': 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quasi nesciunt totam distinctio explicabo praesentium consequatur sapiente fuga laudantium quas dolorem',
-        'price':'5000',
-        'slug':'sambal-cumi'
+        'price': '5000',
+        'slug': 'sambal-cumi'
     },
     {
-        'image':Sambal2,
+        'image': Sambal2,
         'title': 'Sambal Cumi',
         'description': 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quasi nesciunt totam distinctio explicabo praesentium consequatur sapiente fuga laudantium quas dolorem',
-        'price':'20000',
-        'slug':'sambal-cumi'
+        'price': '20000',
+        'slug': 'sambal-cumi'
+    },
+    {
+        'image': Rambak1,
+        'title': 'Rambak Cumi',
+        'description': 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quasi nesciunt totam distinctio explicabo praesentium consequatur sapiente fuga laudantium quas dolorem',
+        'price': '15000',
+        'slug': 'rambak-cumi'
+
+    },
+    {
+        'image': Rambak2,
+        'title': 'Rambak Cumi',
+        'description': 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quasi nesciunt totam distinctio explicabo praesentium consequatur sapiente fuga laudantium quas dolorem',
+        'price': '20000',
+        'slug': 'rambak-cumi'
+    },
+    {
+        'image': Rambak3,
+        'title': 'Rambak Cumi',
+        'description': 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quasi nesciunt totam distinctio explicabo praesentium consequatur sapiente fuga laudantium quas dolorem',
+        'price': '25000',
+        'slug': 'rambak-cumi'
+    },
+    {
+        'image': Sambal1,
+        'title': 'Sambal Cumi',
+        'description': 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quasi nesciunt totam distinctio explicabo praesentium consequatur sapiente fuga laudantium quas dolorem',
+        'price': '5000',
+        'slug': 'sambal-cumi'
+    },
+    {
+        'image': Sambal2,
+        'title': 'Sambal Cumi',
+        'description': 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quasi nesciunt totam distinctio explicabo praesentium consequatur sapiente fuga laudantium quas dolorem',
+        'price': '20000',
+        'slug': 'sambal-cumi'
+    },
+    {
+        'image': Rambak1,
+        'title': 'Rambak Cumi',
+        'description': 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quasi nesciunt totam distinctio explicabo praesentium consequatur sapiente fuga laudantium quas dolorem',
+        'price': '15000',
+        'slug': 'rambak-cumi'
+
+    },
+    {
+        'image': Rambak2,
+        'title': 'Rambak Cumi',
+        'description': 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quasi nesciunt totam distinctio explicabo praesentium consequatur sapiente fuga laudantium quas dolorem',
+        'price': '20000',
+        'slug': 'rambak-cumi'
+    },
+    {
+        'image': Rambak3,
+        'title': 'Rambak Cumi',
+        'description': 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quasi nesciunt totam distinctio explicabo praesentium consequatur sapiente fuga laudantium quas dolorem',
+        'price': '25000',
+        'slug': 'rambak-cumi'
+    },
+    {
+        'image': Sambal1,
+        'title': 'Sambal Cumi',
+        'description': 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quasi nesciunt totam distinctio explicabo praesentium consequatur sapiente fuga laudantium quas dolorem',
+        'price': '5000',
+        'slug': 'sambal-cumi'
+    },
+    {
+        'image': Sambal2,
+        'title': 'Sambal Cumi',
+        'description': 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quasi nesciunt totam distinctio explicabo praesentium consequatur sapiente fuga laudantium quas dolorem',
+        'price': '20000',
+        'slug': 'sambal-cumi'
     },
 ]
 export default function Katalog() {
+    const searchParams = useSearchParams()
+    const pathname = usePathname()
+    const { replace } = useRouter()
+    const [currentPage, setCurrentPage] = useState(1); // State untuk halaman saat ini
+    const itemsPerPage = 12; // Jumlah item yang ingin ditampilkan per halaman
+    const handlePageChange = (pageNumber:number) => {
+        setCurrentPage(pageNumber); // Fungsi untuk mengubah halaman saat ini
+    };
+    const handleSearch = useDebouncedCallback((e: string) => {
+        console.log(pathname)
+        console.log(e)
+        const params = new URLSearchParams(searchParams)
+        if (e) {
+            params.set('query', e)
+        } else {
+            params.delete('query')
+        }
+        replace(`${pathname}?${params.toString()}`)
+
+    }, 300)
+    const filteredData = searchParams.get('query')
+        ? data.filter((item) =>
+            item.title.toLowerCase().includes(searchParams.get('query')!.toLowerCase())
+        )
+        : data; // Display all data if no search term
+
+    const indexOfLastItem = currentPage * itemsPerPage;
+    const indexOfFirstItem = indexOfLastItem - itemsPerPage;
+    const currentItems = filteredData.slice(indexOfFirstItem, indexOfLastItem); // Menyaring item untuk halaman saat ini
+
     return (
         <div className="">
             <div className="relative w-full h-80">
@@ -57,10 +163,10 @@ export default function Katalog() {
             </div>
             <h1 className='mt-20 text-2xl font-semibold text-center mb-10'>Produk Kami</h1>
             <div className="">
-                <form className="flex px-4 items-center md:max-w-screen-md mx-auto">
+                <div className="flex px-4 items-center md:max-w-screen-md mx-auto">
                     <label className="sr-only">Search</label>
                     <div className="relative w-full">
-                        <input type="text" id="voice-search" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg  w-full p-2.5  " placeholder="Search Our Product" />
+                        <input type="text" id="voice-search" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg  w-full p-2.5  " placeholder="Search Our Product" onChange={(e) => handleSearch(e.target.value)} defaultValue={searchParams.get('query')?.toString()} />
                     </div>
                     <button type="submit" className="inline-flex items-center py-2.5 px-3 ms-2 text-sm font-medium text-white bg-blue-700 rounded-lg border border-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 ">
                         <svg className="w-4 h-4 me-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
@@ -68,15 +174,18 @@ export default function Katalog() {
                         </svg>
                         <span>Search</span>
                     </button>
-                </form>
+                </div>
             </div>
             <div className="flex justify-center items-center">
 
                 <div className="grid max-w-screen-lg grid-cols-2 md:grid-cols-3 lg:grid-cols-4 justify-center items-center gap-6 py-10">
-                    {data.map((item,index)=>(
-                        <CardProduct key={index} image={item.image.src} description={item.description} price={item.price} title={item.title} slug={item.slug}/> 
+                    {currentItems.map((item, index) => (
+                        <CardProduct key={index} image={item.image.src} description={item.description} price={item.price} title={item.title} slug={item.slug} />
                     ))}
                 </div>
+            </div>
+            <div className="flex justify-center items-center">
+                <Pagination currentPage={currentPage} totalPages={Math.ceil(filteredData.length / itemsPerPage)} onPageChange={handlePageChange} />
             </div>
         </div>
     );
