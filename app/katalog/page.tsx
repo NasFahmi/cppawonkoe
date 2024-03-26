@@ -10,7 +10,7 @@ import Sambal2 from '@/public/sambal2.jpeg'
 import { useSearchParams, usePathname, useRouter } from 'next/navigation';
 import { useDebouncedCallback } from 'use-debounce';
 import Pagination from '../components/Pagination';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 const data = [
     {
@@ -128,9 +128,19 @@ export default function Katalog() {
     const { replace } = useRouter()
     const [currentPage, setCurrentPage] = useState(1); // State untuk halaman saat ini
     const itemsPerPage = 12; // Jumlah item yang ingin ditampilkan per halaman
-    const handlePageChange = (pageNumber:number) => {
-        setCurrentPage(pageNumber); // Fungsi untuk mengubah halaman saat ini
+    const handlePageChange = (pageNumber:any) => {
+        setCurrentPage(pageNumber);
+
+        // Perbarui URL dengan menambahkan parameter halaman
+        const params = new URLSearchParams(searchParams);
+        params.set('page', pageNumber);
+        replace(`${pathname}?${params.toString()}`);
     };
+    useEffect(() => {
+        // Mengatur currentPage dari parameter URL saat komponen dimuat
+        const pageParam = searchParams.get('page');
+        setCurrentPage(pageParam ? parseInt(pageParam) : 1);
+    }, [searchParams]);
     const handleSearch = useDebouncedCallback((e: string) => {
         console.log(pathname)
         console.log(e)
